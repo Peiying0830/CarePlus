@@ -1,0 +1,365 @@
+/* ==================== RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==================== BODY & BACKGROUND ==================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #26a69a 0%, #00897b 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated Background Pattern */
+body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: drift 25s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-80px, -80px) rotate(8deg); }
+}
+
+/* ==================== MAIN CONTAINER ==================== */
+.logout-container {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 28px;
+    padding: 3.5rem 3rem;
+    box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.25),
+        0 10px 30px rgba(38, 166, 154, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    text-align: center;
+    max-width: 480px;
+    width: 92%;
+    backdrop-filter: blur(15px);
+    animation: slideInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 2px solid rgba(38, 166, 154, 0.1);
+}
+
+@keyframes slideInBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.85);
+    }
+    60% {
+        transform: translateY(5px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==================== LOGO SECTION ==================== */
+.logo-container {
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.logo {
+    width: 110px;
+    height: 66px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 16px rgba(38, 166, 154, 0.35));
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+    }
+    50% { 
+        transform: translateY(-12px) scale(1.03); 
+    }
+}
+
+/* ==================== LOGOUT ICON ==================== */
+.logout-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, #26a69a 0%, #00897b 50%, #00695c 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    box-shadow: 
+        0 10px 30px rgba(38, 166, 154, 0.45),
+        0 0 0 8px rgba(38, 166, 154, 0.1);
+    animation: pulseGlow 2.5s ease-in-out infinite;
+    position: relative;
+}
+
+.logout-icon::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    animation: ripple 2.5s ease-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 
+            0 10px 30px rgba(38, 166, 154, 0.45),
+            0 0 0 8px rgba(38, 166, 154, 0.1);
+    }
+    50% { 
+        transform: scale(1.08); 
+        box-shadow: 
+            0 15px 40px rgba(38, 166, 154, 0.6),
+            0 0 0 12px rgba(38, 166, 154, 0.15);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+h1 {
+    font-size: 2rem;
+    color: #00695c;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #26a69a 0%, #00695c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.message {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.redirect-text {
+    font-size: 0.95rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* ==================== SPINNER ==================== */
+.spinner-container {
+    margin: 2.5rem 0;
+}
+
+.spinner {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto;
+    border: 5px solid #d4f1e8;
+    border-top: 5px solid #26a69a;
+    border-right: 5px solid #00897b;
+    border-radius: 50%;
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==================== PROGRESS BAR ==================== */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0f2f1;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 2rem 0 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) inset;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, 
+        #26a69a 0%, 
+        #00897b 50%, 
+        #00695c 100%
+    );
+    border-radius: 12px;
+    animation: progressFill 3s ease-out forwards;
+    box-shadow: 0 0 10px rgba(38, 166, 154, 0.5);
+}
+
+@keyframes progressFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* ==================== BUTTON ==================== */
+.button-container {
+    margin-top: 2.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #26a69a 0%, #00897b 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 6px 16px rgba(38, 166, 154, 0.35),
+        0 2px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 25px rgba(38, 166, 154, 0.5),
+        0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 5px 15px rgba(38, 166, 154, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .logout-container {
+        padding: 3rem 2.5rem;
+        max-width: 420px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .logout-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logout-container {
+        padding: 2.5rem 1.8rem;
+        width: 95%;
+        border-radius: 24px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .message {
+        font-size: 1rem;
+    }
+
+    .logout-icon {
+        width: 75px;
+        height: 75px;
+        font-size: 2.2rem;
+    }
+
+    .logo {
+        width: 90px;
+        height: 54px;
+    }
+
+    .spinner {
+        width: 48px;
+        height: 48px;
+        border-width: 4px;
+    }
+
+    .btn {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .logout-container {
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .message {
+        font-size: 0.95rem;
+    }
+
+    .logout-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,416 @@
+/* Theme Colors */
+:root {
+    --nav-primary: #26a69a;
+    --nav-secondary: #00897b;
+    --nav-light: #d4f1e8;
+    --nav-darker: #00695c;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+.header {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--nav-primary);
+}
+
+/* Navbar Layout */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    gap: 1rem;
+    z-index: 1001;
+}
+
+.logo-img {
+    width: 100px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.logo:hover {
+    transform: scale(1.03);
+}
+
+.logo:hover .logo-img {
+    transform: rotate(-3deg) scale(1.05);
+}
+
+/* Gradient Text */
+.logo-text {
+    background: linear-gradient(135deg, var(--nav-primary) 0%, var(--nav-secondary) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+}
+
+/* Hamburger Button - Always Visible */
+.mobile-menu-toggle {
+    display: flex;
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--nav-primary) 0%, var(--nav-secondary) 100%);
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(38, 166, 154, 0.4);
+}
+
+.mobile-menu-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Hamburger lines */
+.mobile-menu-toggle span {
+    position: absolute;
+    width: 26px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle span:nth-child(1) {
+    top: 15px;
+}
+
+.mobile-menu-toggle span:nth-child(2) {
+    top: 24px;
+}
+
+.mobile-menu-toggle span:nth-child(3) {
+    top: 33px;
+}
+
+/* Transform into "X" when active */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 24px;
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 24px;
+}
+
+/* Sidebar Menu - Always Hidden by Default */
+.nav-menu {
+    position: fixed;
+    right: -100%;
+    width: 320px;
+    max-width: 85vw;
+    top: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, #e0f7f4 0%, #c6fff9 100%);
+    padding: 5.5rem 1.5rem 2rem 1.5rem;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+/* Scrollbar Styling */
+.nav-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+    background: var(--nav-primary);
+    border-radius: 10px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--nav-secondary);
+}
+
+/* Patient Portal User Badge */
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1.5rem 1.5rem;
+    width: 100%;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--nav-primary) 0%, var(--nav-secondary) 100%);
+    color: white;
+    box-shadow: 0 8px 24px rgba(38, 166, 154, 0.25);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 85px;
+}
+
+.user-badge::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.user-badge .user-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: var(--nav-secondary);
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-role {
+    font-weight: 500;
+    font-size: 0.88rem;
+    opacity: 0.9;
+    letter-spacing: 0.3px;
+}
+
+/* Menu Items */
+.nav-menu li {
+    width: 100%;
+}
+
+.nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    font-size: 1.05rem;
+    padding: 1.1rem 1.3rem;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: #424242;
+    font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-text {
+    flex: 1;
+}
+
+.nav-link:hover {
+    background: var(--nav-light);
+    color: var(--nav-secondary);
+    transform: translateX(8px);
+    padding-left: 1.8rem;
+}
+
+/* Active Sidebar Item */
+.nav-link.active {
+    background: linear-gradient(135deg, var(--nav-primary) 0%, var(--nav-secondary) 100%);
+    color: white !important;
+    transform: none;
+    box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+}
+
+.nav-link.active:hover {
+    transform: translateX(4px);
+    padding-left: 1.5rem;
+}
+
+/* Navigation Divider */
+.nav-divider {
+    display: none;
+}
+
+/* Logout Link */
+.nav-link.logout-link {
+    color: #d32f2f;
+    border: 2px solid transparent;
+}
+
+.nav-link.logout-link:hover {
+    background: #fdeaea;
+    color: #b71c1c;
+    border-color: #ffcdd2;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+    }
+
+    .logo-img {
+        width: 80px;
+        height: 48px;
+    }
+
+    .mobile-menu-toggle {
+        width: 48px;
+        height: 48px;
+    }
+
+    .user-badge {
+        padding: 1.2rem;
+        min-height: 80px;
+    }
+
+    .user-name {
+        font-size: 1.05rem;
+    }
+
+    .user-role {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-text {
+        font-size: 0.95rem;
+    }
+
+    .logo-img {
+        width: 70px;
+        height: 42px;
+    }
+
+    .mobile-menu-toggle {
+        width: 46px;
+        height: 46px;
+    }
+
+    .nav-menu {
+        width: 280px;
+    }
+
+    .user-badge {
+        padding: 1rem;
+        min-height: 75px;
+    }
+
+    .user-name {
+        font-size: 1rem;
+    }
+
+    .user-role {
+        font-size: 0.82rem;
+    }
+}
+
+/* Prevent scrolling when menu opens */
+body.menu-open {
+    overflow: hidden;
+}

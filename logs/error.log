@@ -1,0 +1,4 @@
+[2025-12-11 02:10:17] Registration database error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
+[2025-12-11 15:20:10] Registration database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ic_number' in 'where clause'
+[2025-12-12 01:18:02] Registration database error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ic_number' in 'where clause'
+[2025-12-17 11:54:17] Password reset error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'clinic_management.password_resets' doesn't exist
